@@ -1,0 +1,12 @@
+F:\TM\ThursdayMarket\ThursdayMarket.Utility\bin\Debug\net7.0\ThursdayMarket.Utility.deps.json
+F:\TM\ThursdayMarket\ThursdayMarket.Utility\bin\Debug\net7.0\ThursdayMarket.Utility.dll
+F:\TM\ThursdayMarket\ThursdayMarket.Utility\bin\Debug\net7.0\ThursdayMarket.Utility.pdb
+F:\TM\ThursdayMarket\ThursdayMarket.Utility\obj\Debug\net7.0\ThursdayMarket.Utility.csproj.AssemblyReference.cache
+F:\TM\ThursdayMarket\ThursdayMarket.Utility\obj\Debug\net7.0\ThursdayMarket.Utility.GeneratedMSBuildEditorConfig.editorconfig
+F:\TM\ThursdayMarket\ThursdayMarket.Utility\obj\Debug\net7.0\ThursdayMarket.Utility.AssemblyInfoInputs.cache
+F:\TM\ThursdayMarket\ThursdayMarket.Utility\obj\Debug\net7.0\ThursdayMarket.Utility.AssemblyInfo.cs
+F:\TM\ThursdayMarket\ThursdayMarket.Utility\obj\Debug\net7.0\ThursdayMarket.Utility.csproj.CoreCompileInputs.cache
+F:\TM\ThursdayMarket\ThursdayMarket.Utility\obj\Debug\net7.0\ThursdayMarket.Utility.dll
+F:\TM\ThursdayMarket\ThursdayMarket.Utility\obj\Debug\net7.0\refint\ThursdayMarket.Utility.dll
+F:\TM\ThursdayMarket\ThursdayMarket.Utility\obj\Debug\net7.0\ThursdayMarket.Utility.pdb
+F:\TM\ThursdayMarket\ThursdayMarket.Utility\obj\Debug\net7.0\ref\ThursdayMarket.Utility.dll

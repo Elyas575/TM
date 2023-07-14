@@ -1,0 +1,17 @@
+F:\TM\ThursdayMarket\ThursdayMarket.DataAccess\obj\Debug\net7.0\ThursdayMarket.DataAccess.csproj.AssemblyReference.cache
+F:\TM\ThursdayMarket\ThursdayMarket.DataAccess\obj\Debug\net7.0\ThursdayMarket.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+F:\TM\ThursdayMarket\ThursdayMarket.DataAccess\obj\Debug\net7.0\ThursdayMarket.DataAccess.AssemblyInfoInputs.cache
+F:\TM\ThursdayMarket\ThursdayMarket.DataAccess\obj\Debug\net7.0\ThursdayMarket.DataAccess.AssemblyInfo.cs
+F:\TM\ThursdayMarket\ThursdayMarket.DataAccess\obj\Debug\net7.0\ThursdayMarket.DataAccess.csproj.CoreCompileInputs.cache
+F:\TM\ThursdayMarket\ThursdayMarket.DataAccess\bin\Debug\net7.0\ThursdayMarket.DataAccess.deps.json
+F:\TM\ThursdayMarket\ThursdayMarket.DataAccess\bin\Debug\net7.0\ThursdayMarket.DataAccess.runtimeconfig.json
+F:\TM\ThursdayMarket\ThursdayMarket.DataAccess\bin\Debug\net7.0\ThursdayMarket.DataAccess.dll
+F:\TM\ThursdayMarket\ThursdayMarket.DataAccess\bin\Debug\net7.0\ThursdayMarket.DataAccess.pdb
+F:\TM\ThursdayMarket\ThursdayMarket.DataAccess\bin\Debug\net7.0\ThursdayMarket.Models.dll
+F:\TM\ThursdayMarket\ThursdayMarket.DataAccess\bin\Debug\net7.0\ThursdayMarket.Models.pdb
+F:\TM\ThursdayMarket\ThursdayMarket.DataAccess\obj\Debug\net7.0\ThursdayMarket.DataAccess.csproj.CopyComplete
+F:\TM\ThursdayMarket\ThursdayMarket.DataAccess\obj\Debug\net7.0\ThursdayMarket.DataAccess.dll
+F:\TM\ThursdayMarket\ThursdayMarket.DataAccess\obj\Debug\net7.0\refint\ThursdayMarket.DataAccess.dll
+F:\TM\ThursdayMarket\ThursdayMarket.DataAccess\obj\Debug\net7.0\ThursdayMarket.DataAccess.pdb
+F:\TM\ThursdayMarket\ThursdayMarket.DataAccess\obj\Debug\net7.0\ThursdayMarket.DataAccess.genruntimeconfig.cache
+F:\TM\ThursdayMarket\ThursdayMarket.DataAccess\obj\Debug\net7.0\ref\ThursdayMarket.DataAccess.dll
