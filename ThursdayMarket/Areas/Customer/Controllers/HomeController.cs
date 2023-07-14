@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using ThursdayMarket.DataAccess.IRepository.CategoryRepository;
+using ThursdayMarket.DataAccess.Services;
 using ThursdayMarket.Models;
 
 namespace ThursdayMarket.Areas.Customer.Controllers
@@ -9,15 +11,20 @@ namespace ThursdayMarket.Areas.Customer.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ICategoryService _categoryService;
+        private readonly IProductService _productService;
+    
+        public HomeController(ILogger<HomeController> logger, ICategoryService categoryService, IProductService productService)
         {
+            _productService = productService;
             _logger = logger;
+
         }
 
         public IActionResult Index()
         {
-            return View();
+            var products = _productService.GetProducts();
+            return View(products);
         }
 
         public IActionResult Privacy()
