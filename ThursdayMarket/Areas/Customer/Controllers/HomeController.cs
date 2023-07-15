@@ -1,29 +1,27 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using ThursdayMarket.DataAccess.IRepository.CategoryRepository;
 using ThursdayMarket.DataAccess.Services;
 using ThursdayMarket.Models;
 
 namespace ThursdayMarket.Areas.Customer.Controllers
 {
-
     [Area("Customer")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ICategoryService _categoryService;
         private readonly IProductService _productService;
-    
+
         public HomeController(ILogger<HomeController> logger, ICategoryService categoryService, IProductService productService)
         {
-            _productService = productService;
             _logger = logger;
-
+            _categoryService = categoryService;
+            _productService = productService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var products = _productService.GetProducts();
+            var products = await _productService.GetProductsAsync();
             return View(products);
         }
 
@@ -37,7 +35,5 @@ namespace ThursdayMarket.Areas.Customer.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
-
     }
 }

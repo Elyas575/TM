@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using ThursdayMarket.DataAccess.Data;
 using ThursdayMarket.DataAccess.IRepository.CategoryRepository;
@@ -14,50 +15,50 @@ namespace ThursdayMarket.DataAccess.Repository.CategoryRepository
         {
             _dbContext = dbContext;
         }
-        public  Category AddCategory(Category product)
+
+        public async Task<Category> AddCategoryAsync(Category category)
         {
-             _dbContext.Categories.Add(product);
-            _dbContext.SaveChanges();
-            return product;
+            _dbContext.Categories.Add(category);
+            await _dbContext.SaveChangesAsync();
+            return category;
         }
 
-        public Category DeleteCategoryById(int id)
+        public async Task<Category> DeleteCategoryByIdAsync(int id)
         {
-            var categoryToDelete =  _dbContext.Categories.Find(id);
-            if (categoryToDelete != null){
+            var categoryToDelete = await _dbContext.Categories.FindAsync(id);
+            if (categoryToDelete != null)
+            {
                 _dbContext.Categories.Remove(categoryToDelete);
-                _dbContext.SaveChanges();
+                await _dbContext.SaveChangesAsync();
             }
             return categoryToDelete;
         }
 
-        public IEnumerable<Category> GetCategories()
+        public async Task<IEnumerable<Category>> GetCategoriesAsync()
         {
-            var categories =  _dbContext.Categories.ToList();
+            var categories = await _dbContext.Categories.ToListAsync();
             return categories;
         }
 
-        public Category GetCategoryById(int id)
+        public async Task<Category> GetCategoryByIdAsync(int id)
         {
-            var category =  _dbContext.Categories.Find(id);
+            var category = await _dbContext.Categories.FindAsync(id);
             return category;
-
         }
 
-        public  Category UpdateCategory(Category product)
+        public async Task<Category> UpdateCategoryAsync(Category category)
         {
-            var category =  _dbContext.Categories.Find(product.Id);
+            var existingCategory = await _dbContext.Categories.FindAsync(category.Id);
 
-            if (category != null || category.Id > 0)
+            if (existingCategory != null)
             {
-                category.Name = product.Name;
-                category.DisplayOrder = product.DisplayOrder;
+                existingCategory.Name = category.Name;
+                existingCategory.DisplayOrder = category.DisplayOrder;
             }
 
-            _dbContext.Categories.Update(category);
-             _dbContext.SaveChanges();
+            await _dbContext.SaveChangesAsync();
 
-            return category;
+            return existingCategory;
         }
     }
 }

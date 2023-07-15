@@ -2,9 +2,11 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ThursdayMarket.DataAccess.IRepository.CategoryRepository;
 using ThursdayMarket.DataAccess.IRepository.ProductRepository;
-
 using ThursdayMarket.Models;
 using ThursdayMarket.Models.ViewModels;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace ThursdayMarket.Areas.Admin.Controllers
 {
@@ -13,101 +15,106 @@ namespace ThursdayMarket.Areas.Admin.Controllers
     {
         private readonly IProductRepository _productRepository;
         private readonly ICategoryRepository _categoryRepository;
+
         public ProductController(IProductRepository productRepository, ICategoryRepository categoryRepository)
         {
             _productRepository = productRepository;
             _categoryRepository = categoryRepository;
         }
-        public IActionResult Index()
-        {
-            IEnumerable<Product> products = _productRepository.GetProducts();
 
+        public async Task<IActionResult> Index()
+        {
+            IEnumerable<Product> products = await _productRepository.GetProductsAsync();
             return View(products);
         }
 
         [HttpPost]
-        public IActionResult Create(Product product)
+        public async Task<IActionResult> Create(Product product)
         {
             if (product != null)
             {
-                _productRepository.AddProduct(product);
-                return Redirect("Index");
+                await _productRepository.AddProductAsync(product);
+                return RedirectToAction("Index");
             }
 
             return View();
-
         }
-        public IActionResult Create()
+
+        public async Task<IActionResult> Create()
         {
-            IEnumerable<SelectListItem> CategoryList = _categoryRepository.GetCategories().Select(u => new SelectListItem
-            {
-                Text = u.Name,
-                Value = u.Id.ToString()
-            });
+            IEnumerable<SelectListItem> categoryList = (await _categoryRepository.GetCategoriesAsync())
+                .Select(u => new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.Id.ToString()
+                });
 
             ProductVM productVM = new()
             {
-                CategoryList = CategoryList,
+                CategoryList = categoryList,
                 Product = new Product()
             };
 
-            ViewBag.CategoryList = CategoryList;
+            ViewBag.CategoryList = categoryList;
             return View(productVM);
         }
 
         [HttpPost]
-        public IActionResult Edit(ProductVM obj)
+        public async Task<IActionResult> Edit(ProductVM obj)
         {
-
             if (obj != null)
             {
-                _productRepository.UpdateProduct(obj.Product);
+                await _productRepository.UpdateProductAsync(obj.Product);
                 return RedirectToAction("Index");
-
             }
 
             return View();
         }
-        public IActionResult Edit(int id)
+
+        public async Task<IActionResult> Edit(int id)
         {
-            var product = _productRepository.GetProductById(id);
-            IEnumerable<SelectListItem> CategoryList = _categoryRepository.GetCategories().Select(u => new SelectListItem
-            {
-                Text = u.Name,
-                Value = u.Id.ToString()
-            });
+            var product = await _productRepository.GetProductByIdAsync(id);
+            IEnumerable<SelectListItem> categoryList = (await _categoryRepository.GetCategoriesAsync())
+                .Select(u => new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.Id.ToString()
+                });
 
             ProductVM productVM = new()
             {
-                CategoryList = CategoryList,
+                CategoryList = categoryList,
                 Product = product
             };
 
-            ViewBag.CategoryList = CategoryList;
-            
+            ViewBag.CategoryList = categoryList;
+
             return View(productVM);
         }
 
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            if (id == null || id == 0)
+            if (id == 0)
             {
                 return NotFound();
+            }
 
-            }
-            var category = _productRepository.GetProductById(id);
-            if (category == null)
+            var product = await _productRepository.GetProductByIdAsync(id);
+
+            if (product == null)
             {
                 return NotFound();
             }
-            return View(category);
+
+            return View(product);
         }
+
         [HttpPost, ActionName("Delete")]
-        public IActionResult DeletePost(int id)
+        public async Task<IActionResult> DeletePost(int id)
         {
             if (ModelState.IsValid)
             {
-                _productRepository.DeleteProductById(id);
+                await _productRepository.DeleteProductByIdAsync(id);
                 return RedirectToAction("Index");
             }
 

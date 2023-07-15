@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using ThursdayMarket.DataAccess.Data;
 using ThursdayMarket.DataAccess.IRepository.ProductRepository;
@@ -13,47 +12,49 @@ namespace ThursdayMarket.DataAccess.Repository.ProductRepository
     public class ProductRepository : IProductRepository
     {
         private readonly ApplicationDbContext _context;
+
         public ProductRepository(ApplicationDbContext context)
         {
             _context = context;
         }
-        public  Product AddProduct(Product obj)
+
+        public async Task<Product> AddProductAsync(Product obj)
         {
-            if (obj == null){
+            if (obj == null)
+            {
                 throw new ArgumentNullException();
             }
+
             _context.Products.Add(obj);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return obj;
         }
 
-        public  Product DeleteProductById(int id)
+        public async Task<Product> DeleteProductByIdAsync(int id)
         {
-            Product productToDelete =  _context.Products.Find(id);
+            Product productToDelete = await _context.Products.FindAsync(id);
             _context.Products.Remove(productToDelete);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return productToDelete;
         }
 
-        public Product GetProductById(int id)
+        public async Task<Product> GetProductByIdAsync(int id)
         {
-
-           Product product = _context.Products.Find(id);
-           return product;
+            Product product = await _context.Products.FindAsync(id);
+            return product;
         }
 
-        public IEnumerable<Product> GetProducts()
+        public async Task<IEnumerable<Product>> GetProductsAsync()
         {
-            IEnumerable<Product> products =  _context.Products.ToList();
+            IEnumerable<Product> products = await _context.Products.ToListAsync();
             return products;
         }
 
-        public Product UpdateProduct(Product product)
+        public async Task<Product> UpdateProductAsync(Product product)
         {
-
-             _context.Products.Update(product);
-            _context.SaveChanges();
+            _context.Products.Update(product);
+            await _context.SaveChangesAsync();
             return product;
         }
     }

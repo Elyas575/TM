@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ThursdayMarket.DataAccess.Data;
 using ThursdayMarket.DataAccess.IRepository.CategoryRepository;
-using ThursdayMarket.DataAccess.IRepository.ProductRepository;
 using ThursdayMarket.Models;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ThursdayMarket.Areas.Admin.Controllers
 {
@@ -14,78 +14,80 @@ namespace ThursdayMarket.Areas.Admin.Controllers
         public CategoryController(ICategoryRepository categoryRepository)
         {
             _categoryRepository = categoryRepository;
-
         }
-        public IActionResult Index()
+
+        public async Task<IActionResult> Index()
         {
-            var categories = _categoryRepository.GetCategories();
+            IEnumerable<Category> categories = await _categoryRepository.GetCategoriesAsync();
             return View(categories);
         }
+
         public IActionResult Create()
         {
             return View();
         }
-        [HttpPost]
-        public IActionResult Create(Category item)
-        {
 
-            _categoryRepository.AddCategory(item);
+        [HttpPost]
+        public async Task<IActionResult> Create(Category item)
+        {
+            await _categoryRepository.AddCategoryAsync(item);
             return RedirectToAction("Index");
-
         }
 
-
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
-            if (id == null || id == 0)
+            if (id == 0)
             {
                 return NotFound();
-
             }
-            var category = _categoryRepository.GetCategoryById(id);
+
+            Category category = await _categoryRepository.GetCategoryByIdAsync(id);
             if (category == null)
             {
                 return NotFound();
             }
+
             return View(category);
         }
+
         [HttpPost]
-        public IActionResult Edit(Category item)
+        public async Task<IActionResult> Edit(Category item)
         {
             if (ModelState.IsValid)
             {
-                _categoryRepository.UpdateCategory(item);
+                await _categoryRepository.UpdateCategoryAsync(item);
                 return RedirectToAction("Index");
             }
+
             return View();
         }
 
-
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            if (id == null || id == 0)
+            if (id == 0)
             {
                 return NotFound();
-
             }
-            var category = _categoryRepository.GetCategoryById(id);
+
+            Category category = await _categoryRepository.GetCategoryByIdAsync(id);
             if (category == null)
             {
                 return NotFound();
             }
+
             return View(category);
         }
+
         [HttpPost, ActionName("Delete")]
-        public IActionResult DeletePost(int id)
+        public async Task<IActionResult> DeletePost(int id)
         {
             if (ModelState.IsValid)
             {
-                _categoryRepository.DeleteCategoryById(id);
+                await _categoryRepository.DeleteCategoryByIdAsync(id);
                 return RedirectToAction("Index");
             }
 
             return View();
         }
-
     }
 }

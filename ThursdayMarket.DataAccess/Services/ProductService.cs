@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using ThursdayMarket.DataAccess.IRepository.ProductRepository;
 using ThursdayMarket.Models;
@@ -12,33 +9,34 @@ namespace ThursdayMarket.DataAccess.Services
     {
         private readonly IProductRepository _productRepository;
 
-        public  ProductService(IProductRepository productRepository)
+        public ProductService(IProductRepository productRepository)
         {
             _productRepository = productRepository;
         }
-        public  Product AddProduct(Product product)
+
+        public async Task<Product> AddProductAsync(Product product)
         {
-            return  _productRepository.AddProduct(product);
+            return await _productRepository.AddProductAsync(product);
         }
 
-        public  Product DeleteProductById(int id)
+        public async Task<Product> DeleteProductByIdAsync(int id)
         {
-            return  _productRepository.DeleteProductById(id);
+            return await _productRepository.DeleteProductByIdAsync(id);
         }
 
-        public Product GetProductById(int id)
+        public async Task<Product> GetProductByIdAsync(int id)
         {
-            return  _productRepository.GetProductById(id);
+            return await _productRepository.GetProductByIdAsync(id);
         }
 
-        public IEnumerable<Product> GetProducts()
+        public async Task<IEnumerable<Product>> GetProductsAsync()
         {
-            return  _productRepository.GetProducts();
+            return await _productRepository.GetProductsAsync();
         }
 
-        public Product UpdateProduct(Product product)
+        public async Task<Product> UpdateProductAsync(Product product)
         {
-            return  _productRepository.UpdateProduct(product);
+            return await _productRepository.UpdateProductAsync(product);
         }
     }
 }

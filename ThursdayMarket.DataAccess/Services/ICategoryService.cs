@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using ThursdayMarket.Models;
 
@@ -9,10 +6,10 @@ namespace ThursdayMarket.DataAccess.Services
 {
     public interface ICategoryService
     {
-        public IEnumerable<Category> GetCategories();
-        public Category GetCategoryById(int id);
-        public Category DeleteCategoryById(int id);
-        public Category UpdateCategory(Category product);
-        public Category AddCategory(Category product);
+        public Task<IEnumerable<Category>> GetCategoriesAsync();
+        public Task<Category> GetCategoryByIdAsync(int id);
+        public Task<Category> DeleteCategoryByIdAsync(int id);
+        public Task<Category> UpdateCategoryAsync(Category category);
+        public Task<Category> AddCategoryAsync(Category category);
     }
 }

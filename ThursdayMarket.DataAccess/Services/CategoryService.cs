@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using ThursdayMarket.DataAccess.IRepository.CategoryRepository;
 using ThursdayMarket.Models;
@@ -11,34 +8,35 @@ namespace ThursdayMarket.DataAccess.Services
     public class CategoryService : ICategoryService
     {
         private readonly ICategoryRepository _categoryRepository;
+
         public CategoryService(ICategoryRepository categoryRepository)
         {
             _categoryRepository = categoryRepository;
         }
 
-        public Category AddCategory(Category product)
+        public async Task<Category> AddCategoryAsync(Category category)
         {
-          return  _categoryRepository.AddCategory(product);
+            return await _categoryRepository.AddCategoryAsync(category);
         }
 
-        public Category DeleteCategoryById(int id)
+        public async Task<Category> DeleteCategoryByIdAsync(int id)
         {
-            return  _categoryRepository.DeleteCategoryById(id);
+            return await _categoryRepository.DeleteCategoryByIdAsync(id);
         }
 
-        public  IEnumerable<Category> GetCategories()
+        public async Task<Category> GetCategoryByIdAsync(int id)
         {
-            return  _categoryRepository.GetCategories();
+            return await _categoryRepository.GetCategoryByIdAsync(id);
         }
 
-        public  Category GetCategoryById(int id)
+        public async Task<IEnumerable<Category>> GetCategoriesAsync()
         {
-           return  _categoryRepository.GetCategoryById(id);
+            return await _categoryRepository.GetCategoriesAsync();
         }
 
-        public  Category UpdateCategory(Category product)
+        public async Task<Category> UpdateCategoryAsync(Category category)
         {
-            return  _categoryRepository.UpdateCategory(product);
+            return await _categoryRepository.UpdateCategoryAsync(category);
         }
     }
 }
