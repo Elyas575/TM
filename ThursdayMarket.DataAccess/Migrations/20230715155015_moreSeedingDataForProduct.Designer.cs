@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ThursdayMarket.DataAccess.Data;
 
@@ -10,9 +11,11 @@ using ThursdayMarket.DataAccess.Data;
 namespace ThursdayMarket.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230715155015_moreSeedingDataForProduct")]
+    partial class moreSeedingDataForProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -103,7 +106,7 @@ namespace ThursdayMarket.DataAccess.Migrations
                             Id = 1,
                             CategoryId = 1,
                             ISBN = "100",
-                            ImageUrl = "https://images.unsplash.com/photo-1587132137056-bfbf0166836e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80",
+                            ImageUrl = "",
                             Name = "Banana",
                             Price = 3.0,
                             Quantity = 1.0,
@@ -115,7 +118,7 @@ namespace ThursdayMarket.DataAccess.Migrations
                             Id = 2,
                             CategoryId = 2,
                             ISBN = "100",
-                            ImageUrl = "https://images.unsplash.com/photo-1603833665858-e61d17a86224?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=327&q=80",
+                            ImageUrl = "",
                             Name = "Apple",
                             Price = 4.0,
                             Quantity = 1.0,
@@ -127,7 +130,7 @@ namespace ThursdayMarket.DataAccess.Migrations
                             Id = 3,
                             CategoryId = 1,
                             ISBN = "101",
-                            ImageUrl = "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80",
+                            ImageUrl = "",
                             Name = "Orange",
                             Price = 2.5,
                             Quantity = 1.0,
@@ -139,7 +142,7 @@ namespace ThursdayMarket.DataAccess.Migrations
                             Id = 4,
                             CategoryId = 2,
                             ISBN = "102",
-                            ImageUrl = "https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1239&q=80",
+                            ImageUrl = "",
                             Name = "Carrot",
                             Price = 1.5,
                             Quantity = 1.0,
@@ -151,7 +154,7 @@ namespace ThursdayMarket.DataAccess.Migrations
                             Id = 5,
                             CategoryId = 1,
                             ISBN = "103",
-                            ImageUrl = "https://plus.unsplash.com/premium_photo-1668615554411-27979263cf39?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80",
+                            ImageUrl = "",
                             Name = "Grapes",
                             Price = 5.0,
                             Quantity = 1.0,
@@ -163,7 +166,7 @@ namespace ThursdayMarket.DataAccess.Migrations
                             Id = 6,
                             CategoryId = 2,
                             ISBN = "104",
-                            ImageUrl = "https://images.unsplash.com/photo-1594489428504-5c0c480a15fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80",
+                            ImageUrl = "",
                             Name = "Broccoli",
                             Price = 2.0,
                             Quantity = 1.0,
@@ -175,7 +178,7 @@ namespace ThursdayMarket.DataAccess.Migrations
                             Id = 7,
                             CategoryId = 1,
                             ISBN = "105",
-                            ImageUrl = "https://images.unsplash.com/photo-1604148482093-d55d6fc62400?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80",
+                            ImageUrl = "",
                             Name = "Watermelon",
                             Price = 6.0,
                             Quantity = 1.0,
