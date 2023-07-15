@@ -58,6 +58,7 @@ namespace ThursdayMarket.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Edit(ProductVM obj)
         {
+
             if (obj != null)
             {
                 _productRepository.UpdateProduct(obj.Product);
@@ -69,8 +70,22 @@ namespace ThursdayMarket.Areas.Admin.Controllers
         }
         public IActionResult Edit(int id)
         {
-            var products = _productRepository.GetProductById(id);
-            return View(products);
+            var product = _productRepository.GetProductById(id);
+            IEnumerable<SelectListItem> CategoryList = _categoryRepository.GetCategories().Select(u => new SelectListItem
+            {
+                Text = u.Name,
+                Value = u.Id.ToString()
+            });
+
+            ProductVM productVM = new()
+            {
+                CategoryList = CategoryList,
+                Product = product
+            };
+
+            ViewBag.CategoryList = CategoryList;
+            
+            return View(productVM);
         }
 
         public IActionResult Delete(int id)

@@ -1,21 +1,18 @@
-﻿@model IEnumerable<Product>
-
-
-<div class="row pb-3">
-    @foreach (var product in Model)
-    {
-        <div class="col-lg-3 col-sm-6">
-            <div class="row p-2">
-                <div class="col-12 p-1">
-                    <div class="card border-0 p-3 shadow border-top border-5 rounded">
-                        <h1> @product.Name </h1>
-                        <h1> @product.Price شيقل </h1>
-                        
-                        <img src="https://media.istockphoto.com/id/1141529240/vector/simple-apple-in-flat-style-vector-illustration.jpg?s=612x612&w=0&k=20&c=BTUl_6mGduAMWaGT9Tcr4X6n2IfK4M3HH-KCsr-Hrgs=">
-                        
+﻿<div class="container">
+    <div class="row">
+        @foreach (var product in Model)
+        {
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="row p-2">
+                    <div class="col-12 p-1">
+                        <div class="card border-0 p-3 shadow border-top border-5 rounded">
+                            <h5 class="card-title">@product.Name</h5>
+                            <p class="card-text">@product.Price شيقل</p>
+                            <img src="@product.ImageUrl" class="card-img-top" alt="Product Image">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    }
+        }
+    </div>
 </div>
