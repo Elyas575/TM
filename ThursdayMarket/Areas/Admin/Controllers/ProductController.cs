@@ -73,7 +73,17 @@ namespace ThursdayMarket.Areas.Admin.Controllers
 
         public async Task<IActionResult> Edit(int id)
         {
+            if (id == 0)
+            {
+                return NotFound();
+            }
+
             var product = await _productRepository.GetProductByIdAsync(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
             IEnumerable<SelectListItem> categoryList = (await _categoryRepository.GetCategoriesAsync())
                 .Select(u => new SelectListItem
                 {
@@ -88,7 +98,6 @@ namespace ThursdayMarket.Areas.Admin.Controllers
             };
 
             ViewBag.CategoryList = categoryList;
-
             return View(productVM);
         }
 

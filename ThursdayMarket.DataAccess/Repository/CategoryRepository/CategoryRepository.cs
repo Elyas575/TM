@@ -36,7 +36,9 @@ namespace ThursdayMarket.DataAccess.Repository.CategoryRepository
 
         public async Task<IEnumerable<Category>> GetCategoriesAsync()
         {
-            var categories = await _dbContext.Categories.ToListAsync();
+            var categories = await _dbContext.Categories
+                .Include( c => c.Products)
+                .ToListAsync();
             return categories;
         }
 
