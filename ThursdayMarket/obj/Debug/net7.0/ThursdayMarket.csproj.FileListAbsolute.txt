@@ -260,3 +260,11 @@ F:\TM\ThursdayMarket\ThursdayMarket\bin\Debug\net7.0\runtimes\unix\lib\net6.0\Sy
 F:\TM\ThursdayMarket\ThursdayMarket\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 F:\TM\ThursdayMarket\ThursdayMarket\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 F:\TM\ThursdayMarket\ThursdayMarket\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+F:\TM\ThursdayMarket\ThursdayMarket\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+F:\TM\ThursdayMarket\ThursdayMarket\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+F:\TM\ThursdayMarket\ThursdayMarket\bin\Debug\net7.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+F:\TM\ThursdayMarket\ThursdayMarket\bin\Debug\net7.0\Microsoft.Extensions.Identity.Core.dll
+F:\TM\ThursdayMarket\ThursdayMarket\bin\Debug\net7.0\Microsoft.Extensions.Identity.Stores.dll
+F:\TM\ThursdayMarket\ThursdayMarket\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
+F:\TM\ThursdayMarket\ThursdayMarket\bin\Debug\net7.0\Microsoft.AspNetCore.Identity.UI.dll
+F:\TM\ThursdayMarket\ThursdayMarket\bin\Debug\net7.0\Microsoft.Extensions.FileProviders.Embedded.dll

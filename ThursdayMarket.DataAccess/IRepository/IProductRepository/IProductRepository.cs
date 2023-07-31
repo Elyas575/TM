@@ -8,10 +8,10 @@ namespace ThursdayMarket.DataAccess.IRepository.ProductRepository
 {
     public interface IProductRepository
     {
-        Task<IEnumerable<Product>> GetProductsAsync();
-        Task<Product> GetProductByIdAsync(int id);
-        Task<Product> DeleteProductByIdAsync(int id);
-        Task<Product> UpdateProductAsync(Product product);
-        Task<Product> AddProductAsync(Product product);
+        public  Task<IEnumerable<Product>> GetProductsAsync();
+        public  Task<Product> GetProductByIdAsync(int id);
+        public  Task<Product> DeleteProductByIdAsync(int id);
+        public Task<Product> UpdateProductAsync(Product product);
+        public Task<Product> AddProductAsync(Product product);
     }
 }

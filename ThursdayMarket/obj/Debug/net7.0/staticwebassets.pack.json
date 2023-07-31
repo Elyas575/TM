@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\ThursdayMarket.bundle.scp.css"
     },
     {
+      "Id": "F:\\TM\\ThursdayMarket\\ThursdayMarket\\wwwroot\\HomeStyles.css",
+      "PackagePath": "staticwebassets\\HomeStyles.css"
+    },
+    {
       "Id": "F:\\TM\\ThursdayMarket\\ThursdayMarket\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

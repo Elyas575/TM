@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using ThursdayMarket.DataAccess.Data;
 using ThursdayMarket.DataAccess.IRepository.CategoryRepository;
@@ -44,13 +45,17 @@ namespace ThursdayMarket.DataAccess.Repository.CategoryRepository
 
         public async Task<Category> GetCategoryByIdAsync(int id)
         {
-            var category = await _dbContext.Categories.FindAsync(id);
+            var category = await _dbContext.Categories
+            .Include(i => i.Products)
+            .FirstOrDefaultAsync(i => i.Id == id);
             return category;
         }
 
         public async Task<Category> UpdateCategoryAsync(Category category)
         {
-            var existingCategory = await _dbContext.Categories.FindAsync(category.Id);
+            
+            var existingCategory = await _dbContext.Categories.Include(i => i.Products)
+            .FirstOrDefaultAsync(i => i.Id == category.Id);
 
             if (existingCategory != null)
             {

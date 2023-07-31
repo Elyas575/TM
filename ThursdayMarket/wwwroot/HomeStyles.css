@@ -1,0 +1,106 @@
+﻿/* Custom CSS for the page */
+.carousel-image {
+    height: 200px; /* Set the height of carousel images */
+}
+
+.product-image {
+    height: 120px; /* Set the height of product images */
+}
+
+.card {
+    transition: transform 0.3s; /* Add a smooth transition on hover */
+    margin: 0 auto; /* Center the cards horizontally */
+    margin-bottom: 20px; /* Add some space between the cards */
+    height: 300px; /* Set the height of the cards */
+}
+
+    .card:hover {
+        transform: translateY(-5px); /* Add a slight lift effect on card hover */
+    }
+
+/* Optional: Add a box shadow to the cards for a subtle 3D effect */
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Center the product name and weight text */
+.product-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px; /* Set font size for the product name */
+    font-weight: bold;
+    color: #333; /* Default color for the product name */
+}
+
+/* Set a max width for the product cards to ensure consistency */
+.card {
+    max-width: 220px; /* Set the maximum width of the cards */
+}
+
+/* Center the product price and 'Details' button */
+.card-body {
+    text-align: center;
+}
+
+.text-center span {
+    display: block;
+}
+
+/* Adjust margin and padding for better spacing */
+.container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Optional: Style the 'Details' button */
+.btn-primary {
+    background-color: #007bff; /* Change button color to primary color */
+    color: white;
+    margin-top: 10px; /* Adjust the margin between price and 'Details' button */
+}
+
+    /* Optional: Add a hover effect on the 'Details' button */
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+/* Responsive Styles */
+/* ... Your existing responsive styles ... */
+
+/* Reduce font size for better fit inside the cards */
+.card-title {
+    font-size: 14px;
+}
+
+.text-warning {
+    font-size: 12px;
+}
+
+.text-dark {
+    font-size: 12px;
+}
+
+.text-opacity-75 {
+    font-size: 10px;
+}
+
+.price-1 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #27ae60; /* Green color for the price */
+}
+
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .row-cols-md-2 .col {
+        margin-bottom: 10px; /* Reduce margin for medium-sized screens */
+    }
+}
+
+/* Override the margin for small-sized screens */
+@media (max-width: 767px) {
+    .row-cols-md-2 .col {
+        margin-bottom: 5px; /* Reduce margin for small-sized screens */
+    }
+}

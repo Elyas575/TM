@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using ThursdayMarket.DataAccess.Data;
 using ThursdayMarket.DataAccess.IRepository.ProductRepository;
@@ -41,13 +42,13 @@ namespace ThursdayMarket.DataAccess.Repository.ProductRepository
 
         public async Task<Product> GetProductByIdAsync(int id)
         {
-            Product product = await _context.Products.FindAsync(id);
+            Product product = await _context.Products.Include(i => i.Category).FirstOrDefaultAsync(i => i.Id == id);
             return product;
         }
 
         public async Task<IEnumerable<Product>> GetProductsAsync()
         {
-            IEnumerable<Product> products = await _context.Products.ToListAsync();
+            IEnumerable<Product> products = await _context.Products.Include(x => x.Category).ToListAsync();
             return products;
         }
 

@@ -6,10 +6,10 @@ namespace ThursdayMarket.DataAccess.IRepository.CategoryRepository
 {
     public interface ICategoryRepository
     {
-        Task<IEnumerable<Category>> GetCategoriesAsync();
-        Task<Category> GetCategoryByIdAsync(int id);
-        Task<Category> DeleteCategoryByIdAsync(int id);
-        Task<Category> UpdateCategoryAsync(Category category);
-        Task<Category> AddCategoryAsync(Category category);
+        public  Task<IEnumerable<Category>> GetCategoriesAsync();
+        public  Task<Category> GetCategoryByIdAsync(int id);
+        public Task<Category> DeleteCategoryByIdAsync(int id);
+        public Task<Category> UpdateCategoryAsync(Category category);
+        public Task<Category> AddCategoryAsync(Category category);
     }
 }

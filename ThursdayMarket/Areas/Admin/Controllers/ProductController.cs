@@ -7,24 +7,29 @@ using ThursdayMarket.Models.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
+using ThursdayMarket.Utility;
+using ThursdayMarket.DataAccess.Services;
 
 namespace ThursdayMarket.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.Role_Admin)]
     public class ProductController : Controller
     {
-        private readonly IProductRepository _productRepository;
-        private readonly ICategoryRepository _categoryRepository;
+        private readonly IProductService _productService;
+        private readonly ICategoryService _categoryService;
 
-        public ProductController(IProductRepository productRepository, ICategoryRepository categoryRepository)
+        public ProductController(IProductService productService, ICategoryService categoryService)
         {
-            _productRepository = productRepository;
-            _categoryRepository = categoryRepository;
+            _productService = productService;
+            _categoryService = categoryService;
         }
 
         public async Task<IActionResult> Index()
         {
-            IEnumerable<Product> products = await _productRepository.GetProductsAsync();
+            IEnumerable<Product> products = await _productService.GetProductsAsync();
             return View(products);
         }
 
@@ -33,7 +38,7 @@ namespace ThursdayMarket.Areas.Admin.Controllers
         {
             if (product != null)
             {
-                await _productRepository.AddProductAsync(product);
+                await _productService.AddProductAsync(product);
                 return RedirectToAction("Index");
             }
 
@@ -42,7 +47,7 @@ namespace ThursdayMarket.Areas.Admin.Controllers
 
         public async Task<IActionResult> Create()
         {
-            IEnumerable<SelectListItem> categoryList = (await _categoryRepository.GetCategoriesAsync())
+            IEnumerable<SelectListItem> categoryList = (await _categoryService.GetCategoriesAsync())
                 .Select(u => new SelectListItem
                 {
                     Text = u.Name,
@@ -64,7 +69,7 @@ namespace ThursdayMarket.Areas.Admin.Controllers
         {
             if (obj != null)
             {
-                await _productRepository.UpdateProductAsync(obj.Product);
+                await _productService.UpdateProductAsync(obj.Product);
                 return RedirectToAction("Index");
             }
 
@@ -78,13 +83,13 @@ namespace ThursdayMarket.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var product = await _productRepository.GetProductByIdAsync(id);
+            var product = await _productService.GetProductByIdAsync(id);
             if (product == null)
             {
                 return NotFound();
             }
 
-            IEnumerable<SelectListItem> categoryList = (await _categoryRepository.GetCategoriesAsync())
+            IEnumerable<SelectListItem> categoryList = (await _categoryService.GetCategoriesAsync())
                 .Select(u => new SelectListItem
                 {
                     Text = u.Name,
@@ -108,7 +113,7 @@ namespace ThursdayMarket.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var product = await _productRepository.GetProductByIdAsync(id);
+            var product = await _productService.GetProductByIdAsync(id);
 
             if (product == null)
             {
@@ -123,7 +128,7 @@ namespace ThursdayMarket.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _productRepository.DeleteProductByIdAsync(id);
+                await _productService.DeleteProductByIdAsync(id);
                 return RedirectToAction("Index");
             }
 

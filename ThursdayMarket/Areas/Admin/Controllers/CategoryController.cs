@@ -3,22 +3,26 @@ using ThursdayMarket.DataAccess.IRepository.CategoryRepository;
 using ThursdayMarket.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using ThursdayMarket.Utility;
+using ThursdayMarket.DataAccess.Services;
 
 namespace ThursdayMarket.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles =SD.Role_Admin)]
     public class CategoryController : Controller
     {
-        private readonly ICategoryRepository _categoryRepository;
+        private readonly ICategoryService _categoryService;
 
-        public CategoryController(ICategoryRepository categoryRepository)
+        public CategoryController(ICategoryService categoryService)
         {
-            _categoryRepository = categoryRepository;
+            _categoryService = categoryService;
         }
 
         public async Task<IActionResult> Index()
         {
-            IEnumerable<Category> categories = await _categoryRepository.GetCategoriesAsync();
+            IEnumerable<Category> categories = await _categoryService.GetCategoriesAsync();
             return View(categories);
         }
 
@@ -30,7 +34,7 @@ namespace ThursdayMarket.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Category item)
         {
-            await _categoryRepository.AddCategoryAsync(item);
+            await _categoryService.AddCategoryAsync(item);
             return RedirectToAction("Index");
         }
 
@@ -41,7 +45,7 @@ namespace ThursdayMarket.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            Category category = await _categoryRepository.GetCategoryByIdAsync(id);
+            Category category = await _categoryService.GetCategoryByIdAsync(id);
             if (category == null)
             {
                 return NotFound();
@@ -53,12 +57,11 @@ namespace ThursdayMarket.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(Category item)
         {
-            if (ModelState.IsValid)
+            if (item.Id != null)
             {
-                await _categoryRepository.UpdateCategoryAsync(item);
+                await _categoryService.UpdateCategoryAsync(item);
                 return RedirectToAction("Index");
             }
-
             return View();
         }
 
@@ -69,7 +72,7 @@ namespace ThursdayMarket.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            Category category = await _categoryRepository.GetCategoryByIdAsync(id);
+            Category category = await _categoryService.GetCategoryByIdAsync(id);
             if (category == null)
             {
                 return NotFound();
@@ -83,7 +86,7 @@ namespace ThursdayMarket.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _categoryRepository.DeleteCategoryByIdAsync(id);
+                await _categoryService.DeleteCategoryByIdAsync(id);
                 return RedirectToAction("Index");
             }
 
